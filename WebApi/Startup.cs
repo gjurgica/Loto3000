@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Services.Helpers;
 
 namespace WebApi
 {
@@ -25,6 +26,12 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            var appConfig = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appConfig);
+
+            var appSettings = appConfig.Get<AppSettings>();
+            DiModule.RegisterModule(services, appSettings.LotoAppConnectionString);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
