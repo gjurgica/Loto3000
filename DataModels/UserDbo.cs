@@ -17,6 +17,6 @@ namespace DataModels
         public string Password { get; set; }
         public string Address { get; set; }
         public bool IsAdmin { get; set; } = false;
-        public List<int> Numbers { get; set; };
+        public List<int> Numbers { get; set; }
     }
 }
