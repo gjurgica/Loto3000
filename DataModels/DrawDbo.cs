@@ -6,14 +6,12 @@ using System.Text;
 
 namespace DataModels
 {
-    public class WinnerDbo
+    public class DrawDbo
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int Prize { get; set; }
-        public virtual ICollection<int> WinningNumbers { get; set; }
+        public DateTime Date { get; set; }
+        public List<int> Numbers { get; set; }
     }
 }

@@ -11,6 +11,6 @@ namespace Models
         public string LastName { get; set; }
         public string UserName { get; set; }
         public string Address { get; set; }
-        public List<int> Numbers { get; set; } = new List<int>();
+        public List<TicketModel> Numbers { get; set; } = new List<TicketModel>();
     }
 }

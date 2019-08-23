@@ -9,7 +9,7 @@ namespace Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int Price { get; set; }
-        public List<int> WinningNumbers { get; set; } = new List<int>();
+        public Prizes Prize { get; set; }
+        public List<TicketModel> WinningNumbers { get; set; } = new List<TicketModel>();
     }
 }
