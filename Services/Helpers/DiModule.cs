@@ -15,6 +15,8 @@ namespace Services.Helpers
         {
             services.AddTransient<IRepository<UserDbo>, UserRepository>();
             services.AddTransient<IRepository<WinnerDbo>, WinnerRepository>();
+            services.AddTransient<IRepository<SessionDbo>, SessionRepository>();
+            services.AddTransient<IRepository<TicketDbo>, TicketRepository>();
             services.AddDbContext<LotoAppDbContext>(x =>
             x.UseSqlServer(connectionString));
 

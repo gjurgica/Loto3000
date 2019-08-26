@@ -14,6 +14,5 @@ namespace DataModels
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Prize { get; set; }
-        public virtual ICollection<int> WinningNumbers { get; set; }
     }
 }

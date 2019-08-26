@@ -14,7 +14,7 @@ namespace DataModels
         public DbSet<UserDbo> Users{ get; set; }
         public DbSet<WinnerDbo> Winners { get; set; }
         public DbSet<TicketDbo> Tickets { get; set; }
-        public DbSet<DrawDbo> Draws { get; set; }
+        public DbSet<SessionDbo> Sessions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

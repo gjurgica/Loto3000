@@ -8,5 +8,7 @@ namespace Models
     {
         public int Id { get; set; }
         public List<int> Numbers { get; set; }
+        public int UserId { get; set; }
+        public int Session { get; set; }
     }
 }

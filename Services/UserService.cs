@@ -13,9 +13,13 @@ namespace Services
     public class UserService : IUserService
     {
         private readonly IRepository<UserDbo> _userRepository;
-        public UserService(IRepository<UserDbo> userRepository)
+        private readonly IRepository<TicketDbo> _ticketRepository;
+        private readonly IRepository<SessionDbo> _sessionRepository;
+        public UserService(IRepository<UserDbo> userRepository,IRepository<TicketDbo> ticketRepository,IRepository<SessionDbo> sessionRepository)
         {
             _userRepository = userRepository;
+            _ticketRepository = ticketRepository;
+            _sessionRepository = sessionRepository;
         }
         public UserModel Authenticate(string username, string password)
         {
@@ -43,6 +47,21 @@ namespace Services
             return userModel;
         }
 
+        public void BuyTicket(TicketModel model, int userId)
+        {
+            var user = _userRepository.GetAll().FirstOrDefault(x => x.Id == userId);
+            string result = string.Join("", from i in model.Numbers select i.ToString());
+            TicketDbo newTicket = new TicketDbo()
+            {
+                Id = model.Id,
+                UserId = user.Id,
+                Numbers = result,
+                Session = model.Session
+            };
+            var session = _sessionRepository.GetAll().FirstOrDefault(x => x.Id == user.Session);
+            session.Tickets.Add(newTicket);
+        }
+
         public void RegisterUser(RegisterModel model)
         {
             var md5 = new MD5CryptoServiceProvider();
@@ -56,7 +75,9 @@ namespace Services
                 LastName = model.LastName,
                 UserName = model.UserName,
                 Password = hashedPassword,
-                Address = model.Address
+                Address = model.Address,
+                IsAdmin = false,
+                Session = 0
             };
 
             _userRepository.Add(user);

@@ -6,12 +6,12 @@ using System.Text;
 
 namespace DataModels
 {
-    public class DrawDbo
+    public class SessionDbo
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public List<int> Numbers { get; set; }
+        public virtual ICollection<TicketDbo> Tickets { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace DataModels
         public string Password { get; set; }
         public string Address { get; set; }
         public bool IsAdmin { get; set; } = false;
+        public int Session { get; set; }
         public virtual ICollection<TicketDbo> Numbers { get; set; }
     }
 }
