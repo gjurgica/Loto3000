@@ -39,12 +39,13 @@ namespace WebApi.Controllers
             _userService.RegisterUser(model);
             return Ok("Successfully registered!");
         }
+        [AllowAnonymous]
         [HttpPost("buyticket")]
-        public IActionResult BuyTicket([FromBody] TicketModel ticket)
+        public IActionResult BuyTicket([FromBody] TicketModel ticket,[FromQuery] int userId)
         {
-            var userId = GetAuthorizedUserId();
+            //var userId = GetAuthorizedUserId();
             _userService.BuyTicket(ticket, userId);
-            return Ok("Successfully buy ticket");
+            return Ok("You can check winners here: http://localhost:56747/api/admin/winners");
         }
         private int GetAuthorizedUserId()
         {

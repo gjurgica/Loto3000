@@ -49,17 +49,16 @@ namespace Services
 
         public void BuyTicket(TicketModel model, int userId)
         {
-            var user = _userRepository.GetAll().FirstOrDefault(x => x.Id == userId);
-            string result = string.Join("", from i in model.Numbers select i.ToString());
+            SessionDbo session = _sessionRepository.GetAll().LastOrDefault();
             TicketDbo newTicket = new TicketDbo()
-            {
-                Id = model.Id,
-                UserId = user.Id,
-                Numbers = result,
-                Session = model.Session
-            };
-            var session = _sessionRepository.GetAll().FirstOrDefault(x => x.Id == user.Session);
-            session.Tickets.Add(newTicket);
+                {
+                    UserId = userId,
+                    Numbers = model.Numbers.ToString(),
+                    Session = session.Id
+                };
+            _ticketRepository.Add(newTicket);
+
+ 
         }
 
         public void RegisterUser(RegisterModel model)

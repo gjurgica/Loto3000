@@ -57,8 +57,9 @@ namespace WebApi
             });
 
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IAdminService, AdminService>();
 
-            
+
             DiModule.RegisterModule(services, appSettings.LotoAppConnectionString);
         }
 
