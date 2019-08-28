@@ -41,10 +41,10 @@ namespace WebApi.Controllers
         }
         [AllowAnonymous]
         [HttpPost("buyticket")]
-        public IActionResult BuyTicket([FromBody] TicketModel ticket,[FromQuery] int userId)
+        public IActionResult BuyTicket([FromBody] string numbers,[FromQuery] int userId)
         {
             //var userId = GetAuthorizedUserId();
-            _userService.BuyTicket(ticket, userId);
+            _userService.BuyTicket(numbers, userId);
             return Ok("You can check winners here: http://localhost:56747/api/admin/winners");
         }
         private int GetAuthorizedUserId()

@@ -4,6 +4,7 @@ using Models;
 using Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -47,13 +48,14 @@ namespace Services
             return userModel;
         }
 
-        public void BuyTicket(TicketModel model, int userId)
+        public void BuyTicket(string model, int userId)
         {
+           
             SessionDbo session = _sessionRepository.GetAll().LastOrDefault();
             TicketDbo newTicket = new TicketDbo()
                 {
                     UserId = userId,
-                    Numbers = model.Numbers.ToString(),
+                    Numbers = model,
                     Session = session.Id
                 };
             _ticketRepository.Add(newTicket);
