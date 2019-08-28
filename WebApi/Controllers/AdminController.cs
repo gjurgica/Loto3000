@@ -29,5 +29,10 @@ namespace WebApi.Controllers
         {
            return _adminService.CheckWinners();
         }
+        [HttpGet("luckynumbers")]
+        public ActionResult<List<int>> GetNumbers()
+        {
+            return _adminService.Draw();
+        }
     }
 }

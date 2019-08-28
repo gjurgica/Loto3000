@@ -42,17 +42,17 @@ namespace Services
                 {
                     UserId = x.UserId,
                     Session = x.Session,
-                    Numbers = x.Numbers.Select(c => c - '0').ToList()
+                    Numbers = x.Numbers.Split(',').Select(Int32.Parse).ToList()
         });
-            foreach(var num in numbers)
+            foreach (var num in numbers)
             {
                 var check = num.Numbers.Intersect(luckyNumbers).ToList();
                 if (check.Count == 3)
                 {
                     WinnerModel model = new WinnerModel()
                     {
-                        FirstName = _userRepository.GetAll().Where(x => x.Id == num.UserId).Select(x => x.FirstName).ToString(),
-                        LastName = _userRepository.GetAll().Where(x => x.Id == num.UserId).Select(x => x.LastName).ToString(),
+                        FirstName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).FirstName,
+                        LastName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).LastName,
                         Prize = Prizes.GiftCard_50
                     };
                     winners.Add(model);
@@ -61,8 +61,8 @@ namespace Services
                 {
                     WinnerModel model = new WinnerModel()
                     {
-                        FirstName = _userRepository.GetAll().Where(x => x.Id == num.UserId).Select(x => x.FirstName).ToString(),
-                        LastName = _userRepository.GetAll().Where(x => x.Id == num.UserId).Select(x => x.LastName).ToString(),
+                        FirstName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).FirstName,
+                        LastName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).LastName,
                         Prize = Prizes.GiftCard_100
                     };
                     winners.Add(model);
@@ -71,8 +71,8 @@ namespace Services
                 {
                     WinnerModel model = new WinnerModel()
                     {
-                        FirstName = _userRepository.GetAll().Where(x => x.Id == num.UserId).Select(x => x.FirstName).ToString(),
-                        LastName = _userRepository.GetAll().Where(x => x.Id == num.UserId).Select(x => x.LastName).ToString(),
+                        FirstName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).FirstName,
+                        LastName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).LastName,
                         Prize = Prizes.TV
                     };
                     winners.Add(model);
@@ -81,8 +81,8 @@ namespace Services
                 {
                     WinnerModel model = new WinnerModel()
                     {
-                        FirstName = _userRepository.GetAll().Where(x => x.Id == num.UserId).Select(x => x.FirstName).ToString(),
-                        LastName = _userRepository.GetAll().Where(x => x.Id == num.UserId).Select(x => x.LastName).ToString(),
+                        FirstName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).FirstName,
+                        LastName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).LastName,
                         Prize = Prizes.Vacation
                     };
                     winners.Add(model);
@@ -91,8 +91,8 @@ namespace Services
                 {
                     WinnerModel model = new WinnerModel()
                     {
-                        FirstName = _userRepository.GetAll().Where(x => x.Id == num.UserId).Select(x => x.FirstName).ToString(),
-                        LastName = _userRepository.GetAll().Where(x => x.Id == num.UserId).Select(x => x.LastName).ToString(),
+                        FirstName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).FirstName,
+                        LastName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).LastName,
                         Prize = Prizes.Car
                     };
                     winners.Add(model);
@@ -101,7 +101,7 @@ namespace Services
             return winners;
 
         }
-        private List<int> Draw()
+        public List<int> Draw()
         {
             List<int> numbers = new List<int>();
             Random rnd = new Random();

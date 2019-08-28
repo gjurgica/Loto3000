@@ -9,5 +9,6 @@ namespace Services.Interfaces
     {
         void StartSession();
         List<WinnerModel> CheckWinners();
+        List<int> Draw();
     }
 }

@@ -10,6 +10,5 @@ namespace Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Prizes Prize { get; set; }
-        public List<TicketModel> WinningNumbers { get; set; } = new List<TicketModel>();
     }
 }

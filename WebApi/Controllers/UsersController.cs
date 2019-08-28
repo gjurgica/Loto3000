@@ -45,7 +45,7 @@ namespace WebApi.Controllers
         {
             //var userId = GetAuthorizedUserId();
             _userService.BuyTicket(numbers, userId);
-            return Ok("You can check winners here: http://localhost:56747/api/admin/winners");
+            return Ok("You can check luckynumbers here:http://localhost:56747/api/admin/luckynumbers winners here: http://localhost:56747/api/admin/winners");
         }
         private int GetAuthorizedUserId()
         {
