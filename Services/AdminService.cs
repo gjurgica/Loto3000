@@ -14,11 +14,13 @@ namespace Services
         private readonly IRepository<TicketDbo> _ticketRepository;
         private readonly IRepository<SessionDbo> _sessionRepository;
         private readonly IRepository<UserDbo> _userRepository;
-        public AdminService( IRepository<TicketDbo> ticketRepository, IRepository<SessionDbo> sessionRepository,IRepository<UserDbo> userRepository)
+        private readonly IRepository<WinnerDbo> _winnerRepository;
+        public AdminService( IRepository<TicketDbo> ticketRepository, IRepository<SessionDbo> sessionRepository,IRepository<UserDbo> userRepository,IRepository<WinnerDbo> winnerRepository)
         {
             _ticketRepository = ticketRepository;
             _sessionRepository = sessionRepository;
             _userRepository = userRepository;
+            _winnerRepository = winnerRepository;
         }
 
         public void StartSession()
@@ -56,6 +58,7 @@ namespace Services
                         Prize = Prizes.GiftCard_50
                     };
                     winners.Add(model);
+                    _winnerRepository.Add(Winner(model));
                 }
                 else if(check.Count == 4)
                 {
@@ -66,6 +69,7 @@ namespace Services
                         Prize = Prizes.GiftCard_100
                     };
                     winners.Add(model);
+                    _winnerRepository.Add(Winner(model));
                 }
                 else if (check.Count == 5)
                 {
@@ -76,6 +80,7 @@ namespace Services
                         Prize = Prizes.TV
                     };
                     winners.Add(model);
+                    _winnerRepository.Add(Winner(model));
                 }
                 else if (check.Count == 6)
                 {
@@ -86,6 +91,7 @@ namespace Services
                         Prize = Prizes.Vacation
                     };
                     winners.Add(model);
+                    _winnerRepository.Add(Winner(model));
                 }
                 else if (check.Count == 7)
                 {
@@ -96,6 +102,7 @@ namespace Services
                         Prize = Prizes.Car
                     };
                     winners.Add(model);
+                    _winnerRepository.Add(Winner(model));
                 }
             }
             return winners;
@@ -115,6 +122,15 @@ namespace Services
                 }
             }
             return numbers;
+        }
+        private WinnerDbo Winner(WinnerModel model)
+        {
+            return new WinnerDbo()
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Prize = (int)model.Prize
+            };
         }
     }
 }
