@@ -48,7 +48,7 @@ namespace DataModels.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
-                    Prize = table.Column<int>(nullable: false)
+                    Prize = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

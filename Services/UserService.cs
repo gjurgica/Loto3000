@@ -77,8 +77,6 @@ namespace Services
                 UserName = model.UserName,
                 Password = hashedPassword,
                 Address = model.Address,
-                IsAdmin = false,
-                Session = 0
             };
 
             _userRepository.Add(user);

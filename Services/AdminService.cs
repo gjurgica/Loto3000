@@ -55,7 +55,7 @@ namespace Services
                     {
                         FirstName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).FirstName,
                         LastName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).LastName,
-                        Prize = Prizes.GiftCard_50
+                        Prize = Enum.GetName(typeof(Prizes), 5)
                     };
                     winners.Add(model);
                     _winnerRepository.Add(Winner(model));
@@ -66,7 +66,7 @@ namespace Services
                     {
                         FirstName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).FirstName,
                         LastName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).LastName,
-                        Prize = Prizes.GiftCard_100
+                        Prize = Enum.GetName(typeof(Prizes), 4)
                     };
                     winners.Add(model);
                     _winnerRepository.Add(Winner(model));
@@ -77,7 +77,7 @@ namespace Services
                     {
                         FirstName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).FirstName,
                         LastName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).LastName,
-                        Prize = Prizes.TV
+                        Prize = Enum.GetName(typeof(Prizes), 3)
                     };
                     winners.Add(model);
                     _winnerRepository.Add(Winner(model));
@@ -88,7 +88,7 @@ namespace Services
                     {
                         FirstName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).FirstName,
                         LastName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).LastName,
-                        Prize = Prizes.Vacation
+                        Prize = Enum.GetName(typeof(Prizes), 2)
                     };
                     winners.Add(model);
                     _winnerRepository.Add(Winner(model));
@@ -99,7 +99,7 @@ namespace Services
                     {
                         FirstName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).FirstName,
                         LastName = _userRepository.GetAll().FirstOrDefault(x => x.Id == num.UserId).LastName,
-                        Prize = Prizes.Car
+                        Prize = Enum.GetName(typeof(Prizes),1)
                     };
                     winners.Add(model);
                     _winnerRepository.Add(Winner(model));
@@ -129,7 +129,7 @@ namespace Services
             {
                 FirstName = model.FirstName,
                 LastName = model.LastName,
-                Prize = (int)model.Prize
+                Prize = model.Prize
             };
         }
     }

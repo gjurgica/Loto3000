@@ -96,7 +96,7 @@ namespace DataModels.Migrations
 
                     b.Property<string>("LastName");
 
-                    b.Property<int>("Prize");
+                    b.Property<string>("Prize");
 
                     b.HasKey("Id");
 

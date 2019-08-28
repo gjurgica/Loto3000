@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataModels.Migrations
 {
     [DbContext(typeof(LotoAppDbContext))]
-    [Migration("20190826125027_init")]
+    [Migration("20190828102937_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -98,7 +98,7 @@ namespace DataModels.Migrations
 
                     b.Property<string>("LastName");
 
-                    b.Property<int>("Prize");
+                    b.Property<string>("Prize");
 
                     b.HasKey("Id");
 
